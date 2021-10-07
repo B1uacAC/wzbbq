@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<head>
+    <title>Show your love here!
+    </title>
+    <meta charset="utf-8">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="vue.min.js"></script>
+    <script src="axios.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background-color: #333;
+            font-family:"Microsoft YaHei"
+        }
+
+        div {
+            /* display: grid; */
+        }
+
+        .container {
+            display: grid;
+            margin: 0 auto;
+            width: auto;
+            height: 1100px;
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-rows: 90px 100% auto;
+            grid-template-areas: "header1 header2 header3"
+                "side1   main     side2"
+                "tail    tail      tail";
+        ;
+        }
+        .word{
+            width:930px;
+            height: fit-content;
+            background-color: rgb(241, 250, 249);
+            color: rgb(14, 14, 14);
+            margin-top: 5px;
+            text-align: center;
+            /* line-height: 100px; */
+            margin: 10px auto;    
+            border-top: 4px solid #68228B;
+            box-shadow: 0 0 30px #000;
+        }
+        .word1{
+            width:905px;    
+            height: fit-content;
+            font-size: x-large;
+            margin: 25px;
+            padding-right: 25px;
+        }
+        .word2{
+            width:905px;
+            height: 30px;
+            font-size: medium;
+            text-align: right;
+            padding-right: 25px;
+        }
+        .side{
+            margin-left: 0px;
+            margin-top: 10px;
+            width: 220px;
+            float: left;
+            margin-right: 5px;
+            background-color: #999;
+            padding: 10px;
+            font-size: 18px;
+        }
+        .head{    
+            background-color: #eee;
+        }
+        .head0{    
+            display: flex;
+            background-color: #ccc;
+            font-family: STXingkai;
+            font-size: large;
+            padding-left: 10px;
+            align-items: center;
+           justify-content: center;
+        }
+        .head0 .point{
+           width:1em;
+           height: 1em;
+           border-radius: 50%;
+           background:#fff;
+           margin:0.5em;
+           user-select: none;
+           position: relative;
+        }
+
+        .head0 .point::before{
+            position: absolute;
+            content: '';
+            width:100%;
+            height: 100%;
+            background:inherit;
+            border-radius: inherit;
+            animation: wave 2s ease-out infinite;
+        }
+        @keyframes wave {
+            50%,
+            70%{
+                transform: scale(2.5);
+            }
+            80%,
+            100%{
+                opacity: 0;
+            }
+        }
+
+        .head0 .point:nth-child(1){
+        
+            background-color: #7ef9ff;
+
+        }
+        .head0 .point:nth-child(2){
+            background-color: #89cff0;
+            
+        }
+        .head0 .point:nth-child(3){
+            background-color: #4682b4;
+            
+        }
+        .head0 .point:nth-child(4){
+            background-color: #0f52ba;
+            
+        }
+        .head0 .point:nth-child(5){
+            background-color: #000080;
+            
+        }
+
+        .head0 .point:nth-child(1)::before{
+        
+       animation-delay: 0s;
+
+    }
+    .head0 .point:nth-child(2)::before{
+        animation-delay: 0.2s;
+        
+    }
+    .head0 .point:nth-child(3)::before{
+        animation-delay: 0.4s;
+        
+    }
+    .head0 .point:nth-child(4)::before{
+        animation-delay: 0.6s;
+        
+    }
+    .head0 .point:nth-child(5)::before{
+        animation-delay: 0.8s;
+        
+    }
+
+        .bbq{
+            font-size: 70px;
+            text-align: center;
+            line-height: -80px;
+            font-family: STXingkai;
+        }
+        .div123{
+            margin-right: 0px;
+            margin-top: 10px;    
+            width: 220px;
+            float: right;
+            background-color: #999;
+            padding: 10px;
+        }
+        input{
+        }
+        #input{
+            width: 205px;
+
+        }
+        #space{
+            /* width: 10px; */
+        }
+        A{
+            color: #333;
+        }
+        .head3{
+            display: flex;
+            background-color: #ccc;
+            font-family: STXingkai;
+            font-size: large;
+            padding-left: 10px;
+            align-items: center;
+           justify-content: center;
+           
+
+        }
+
+        a{
+            position: relative;
+            width:100px;
+            height: 50px;
+            font-size: 20px;
+            color:#fff;
+            border-radius: 50px;
+            background-image: linear-gradient(to right,#03a9f4, rgb(213, 167, 240), #ffeb3b, #09a8f4);
+            background-size: 400%;
+            text-align: center;
+            text-transform: uppercase;
+            border:5px;
+
+        }
+        a::before{
+            content: '';
+            position: absolute;
+            top:-5px;
+            bottom: -5px;
+            left: -5px;
+            right:-5px;
+            border-radius: 50px;
+            background-image: linear-gradient(to right,#03a9f4, rgb(213, 167, 240), #ffeb3b, #09a8f4);
+            background-size: 400%;
+            z-index: -1;
+            filter:blur(20px)
+
+        }
+        a:hover{
+            animation: lg 8s infinite;
+        }
+        @keyframes lg {
+            100%{
+                background-position: -400% 0;
+            }
+        }
+       
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header1 class="head0">
+             <div class="point"></div>
+             <div class="point"></div>
+             <div class="point"></div>
+             <div class="point"></div>
+             <div class="point"></div>
+        </header1>
+        <header2 class="head">
+            <div class="bbq">
+                 表      白      墙
+            </div>
+          
+        </header2>
+        <header3 class="head3">
+            <br>
+         <a href="index.html"><div style="position: relative; bottom: -20px;">前往跑马灯</div></a>
+        </header3>
+        <side1>
+        
+            <div class="div123">
+                <h3>LOGIN</h3>
+                <form>
+                    <label for="user"><i></i></label>
+                    <input id="input"  type="text" v-model="user" id="user" placeholder="邮箱/手机/用户名">
+                    <label for="password"><i></i></label>
+                    <input id="input"  type="password" v-model="password" id="password" placeholder="请输入密码">
+                    <br>
+                   
+                    <input type="submit" name="" value="登录" @click="login" >
+                </form>
+                 
+            </div>
+            <script>
+             
+            </script>
+       
+        </side1>
+        <main>
+            <div id="space" class="spa">
+
+            </div>
+            <script>
+
+            </script>
+        </main>
+        <side2 >
+            <div id="box" class="side">
+                <h3>SHOW YOU LOVE!</h3>
+                <form>
+                    <div id="username">
+                        <input id="input" type="text" v-model="username" placeholder="你的名字">
+                    </div>
+                    <div id="message">
+                        <input id="input"  type="text" v-model="message" placeholder="你想表白的话">
+                    </div>
+                    <div id="btnbox">
+                        <input type="button" value="发送" @click="login">
+                        <input type="reset" value="重置">
+                    </div>
+                </form>
+            </div>
+            <script type="text/javascript">
+                var name = new Array; var flag = new Array;
+                var i95028 = 0;
+                function Get(name, message) {
+                    $.post("http://localhost:8010/", { name: name, message: message });
+                    var frame95028 = document.createElement('script');
+                    frame95028.src = 'http://localhost:8010?name=95028&message=27793&callback=func';
+                    frame95028.id = 'id95028';
+                    $('body').append(frame95028);
+                   
+                }
+                function func(data) {
+                    console.log("get arrey succeeded !");
+                    if (i95028++ != 0) {
+                        alert("posted !")
+                        history.go(0);
+                        num++;
+                       
+                    }
+                    for (let iiiiiiiii = 0; iiiiiiiii < data.length; iiiiiiiii++) {
+                        for (let jjjjjjjj = 0; jjjjjjjj < data[iiiiiiiii].length; jjjjjjjj++) {
+                            data[iiiiiiiii][jjjjjjjj] = decodeURIComponent(data[iiiiiiiii][jjjjjjjj]);
+                        }
+                    }
+                    console.log(data);
+                    //-----------------------------------------------------------------------------------------
+                   // $('#space')[0].html();
+                   for(let i=0;i<data.length;i++){
+                       if(flag[i]===0){continue;}
+                       else{flag[i]=i+1;var txt=document.createElement("div");
+                       txt.classList.add("word");
+                       $('#space').html($('#space').html() + '<div class = "word"><div class = "word1">'+data[i][1]+'</div><div class = "word2">from:'+data[i][0]+'</div></div>');}
+                   }
+
+
+
+                    //-----------------------------------------------------------------------------------------
+                }
+                var vm1 = new Vue({
+                    el: '#box',
+                    data: {
+                        username: '',
+                        message: '',
+                        newname: [],
+                        newmessage: [],
+                    },
+                    methods: {
+                        login: function () {
+                            if (this.username == "" || this.message == "") {
+                                alert("请不要将两个空空着！");
+                            } else {
+                                Get(this.username, this.message);
+                            }
+                        },
+
+                    }
+                });
+
+
+
+                Get();
+            </script>
+        </side2>
+        <tail>
+
+        </tail>
+    </div>
+</body>
+
+</html>
